@@ -1,0 +1,852 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Portfolio of Bojan Trajkovski, Lead Graphic Designer and Frontend Developer in Malta.">
+<title>Bojan Trajkovski</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: quiet, single-column portfolio. Lots of air, one typeface, work shown large on soft panels. */
+@font-face{font-family:"Satoshi";src:local("Satoshi"),local("Satoshi-Regular"),local("Satoshi Regular");font-weight:400}
+@font-face{font-family:"Satoshi";src:local("Satoshi Medium"),local("Satoshi-Medium");font-weight:500}
+@font-face{font-family:"Satoshi";src:local("Satoshi Bold"),local("Satoshi-Bold");font-weight:700}
+:root{
+  --bg:#F6F6F4; --surface:#FFFFFF; --soft:#ECECE8; --line:#E2E2DD;
+  --text:#111214; --muted:#6C6F76; --faint:#9A9DA4;
+  --ink:#111214; --on-ink:#FFFFFF;
+  --font:"Satoshi","Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --wrap:1200px; --r:22px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0E0F11; --surface:#16171A; --soft:#1C1D21; --line:#26282D;
+  --text:#F2F2F0; --muted:#9A9DA4; --faint:#6C6F76; --ink:#F2F2F0; --on-ink:#0E0F11; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E0F11; --surface:#16171A; --soft:#1C1D21; --line:#26282D;
+  --text:#F2F2F0; --muted:#9A9DA4; --faint:#6C6F76; --ink:#F2F2F0; --on-ink:#0E0F11; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;letter-spacing:-.005em}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+img{display:block;max-width:100%}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3,h4{margin:0;font-weight:700;letter-spacing:-.03em;line-height:1.05;text-wrap:balance}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.eyebrow{font-size:13px;font-weight:500;color:var(--muted);letter-spacing:.02em}
+.muted{color:var(--muted)}
+:focus-visible{outline:2px solid var(--text);outline-offset:3px;border-radius:6px}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:saturate(1.4) blur(14px)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:18px}
+.nav .me{font-weight:700;text-decoration:none;letter-spacing:-.02em}
+.nav ul{display:flex;align-items:center;gap:28px;list-style:none;margin:0;padding:0;font-size:15px;font-weight:500}
+.nav ul a{text-decoration:none;color:var(--muted)}
+.nav ul a:hover{color:var(--text)}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--on-ink)!important;text-decoration:none;font-weight:500;padding:10px 18px;border-radius:999px;font-size:15px}
+.pill:hover{opacity:.88}
+.pill.ghost{background:transparent;color:var(--text)!important;border:1px solid var(--line)}
+@media (max-width:760px){.nav ul li.hide{display:none}}
+
+/* hero */
+.hero{padding-block:72px 40px}
+.hero .who{display:flex;align-items:center;gap:14px;margin-bottom:36px}
+.hero .who img{width:56px;height:56px;border-radius:50%;object-fit:cover}
+.hero .who b{display:block;font-weight:700}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--muted)}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:#2BB673;box-shadow:0 0 0 4px color-mix(in srgb,#2BB673 20%,transparent)}
+.hero h1{font-size:clamp(42px,6.6vw,88px);max-width:15ch}
+.hero h1 span{color:var(--faint)}
+.hero .sub{margin-top:28px;font-size:clamp(18px,1.6vw,21px);color:var(--muted);max-width:56ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:72px;padding-top:28px;border-top:1px solid var(--line)}
+.meta div{display:flex;flex-direction:column;gap:6px}
+.meta strong{font-size:15px;font-weight:500}
+@media (max-width:760px){.meta{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* sections */
+section{padding-block:120px 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.head h2{font-size:clamp(34px,4.4vw,56px)}
+.case-top{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:end;margin-bottom:40px}
+.case-top h2{font-size:clamp(44px,6vw,80px)}
+.case-top .lead{font-size:19px;color:var(--muted);margin-top:18px;max-width:46ch}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 28px}
+.facts div{display:flex;flex-direction:column;gap:4px;padding-top:14px;border-top:1px solid var(--line)}
+.facts span{font-size:15px}
+@media (max-width:860px){.case-top{grid-template-columns:1fr;gap:32px}}
+
+.panel{background:var(--surface);border-radius:var(--r);overflow:hidden}
+
+/* product launcher */
+#work{padding-top:96px}
+.apps-title{font-size:clamp(34px,4.4vw,56px);font-weight:500;margin-bottom:40px}
+.apps{display:grid;grid-template-columns:repeat(4,minmax(0,160px));gap:40px clamp(16px,4vw,48px)}
+.app{display:flex;flex-direction:column;align-items:center;gap:16px;text-decoration:none;color:inherit}
+.icon{width:100%;aspect-ratio:1;border-radius:28%;display:grid;place-items:center;overflow:hidden;background:var(--soft);color:#fff;font-weight:700;font-size:56px;letter-spacing:-.04em;transition:transform .25s,box-shadow .25s}
+.icon img{width:100%;height:100%;object-fit:cover}
+.icon{box-shadow:0 1px 2px rgba(17,18,20,.06),0 8px 20px -8px rgba(17,18,20,.18)}
+.app:hover .icon{transform:translateY(-4px);box-shadow:0 2px 4px rgba(17,18,20,.06),0 18px 32px -12px rgba(17,18,20,.28)}
+.app:focus-visible{outline:none}
+.app:focus-visible .icon{border-radius:28%;outline:2px solid var(--text);outline-offset:4px}
+.icon.servx{background:#F1F1F1}
+.icon.highbet{background:#0B1F4D}
+.icon.visio{background:rgb(7,27,54)}
+.icon.avidlionz{background:rgb(1, 20, 35)}
+.icon.betjara{background:#FFFFFF}
+.icon.trustedmalta{background:#1B1A1B}
+.icon.affiliatepark{background:linear-gradient(145deg,#B26BFF,#3B1D7A)}
+.app .name{font-size:17px;font-weight:500;letter-spacing:-.01em;text-align:center}
+@media (max-width:700px){.apps{grid-template-columns:repeat(4,minmax(0,1fr));gap:24px 16px}.app{gap:8px}.icon{border-radius:28%}.app .name{font-size:12px;line-height:1.3}}
+.product{scroll-margin-top:80px}
+.shot{background:var(--soft);border-radius:var(--r);overflow:hidden}
+.shot img{width:100%;height:auto}
+.site{position:relative}
+.visit{position:absolute;right:20px;bottom:20px;display:inline-flex;align-items:center;gap:8px;background:#FFFFFF;color:#111214;text-decoration:none;font-weight:600;font-size:15px;padding:12px 20px;border-radius:999px;box-shadow:0 10px 30px -8px rgba(0,0,0,.45);transition:transform .2s}
+.visit:hover{transform:translateY(-2px)}
+.visit:focus-visible{outline:2px solid #FFFFFF;outline-offset:3px}
+@media (max-width:600px){.visit{right:12px;bottom:12px;font-size:13px;padding:9px 14px}}
+.caption{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:14px;font-size:14px;color:var(--muted)}
+
+.sub-head{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:start;margin:96px 0 32px}
+.sub-head h3{font-size:clamp(26px,2.8vw,36px)}
+.sub-head p{color:var(--muted);max-width:56ch}
+@media (max-width:860px){.sub-head{grid-template-columns:1fr;gap:12px}}
+
+/* phone rail */
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,1fr);gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:36px;background:var(--soft);border-radius:var(--r);scrollbar-width:thin}
+.rail figure{margin:0;scroll-snap-align:start;display:flex;flex-direction:column;gap:12px}
+.rail img{width:100%;aspect-ratio:394/872;object-fit:cover;object-position:top;border-radius:26px;box-shadow:0 1px 0 var(--line),0 18px 40px -18px rgba(17,18,20,.35);background:#fff}
+.rail figcaption{font-size:14px;color:var(--muted);padding-left:4px}
+.rail.dark{background:#0B1530}
+.rail.dark figcaption{color:#A9B3C9}
+@media (max-width:600px){.rail{padding:20px;grid-auto-columns:72%}}
+
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:20px}
+@media (max-width:760px){.duo{grid-template-columns:1fr}}
+
+.flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:20px}
+.flow div{background:var(--surface);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:8px}
+.flow b{font-size:13px;color:var(--faint);font-weight:500}
+.flow h4{font-size:20px;letter-spacing:-.02em}
+.flow p{color:var(--muted);font-size:15px}
+@media (max-width:760px){.flow{grid-template-columns:1fr}}
+
+/* highbet */
+.social{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.social img{border-radius:16px;aspect-ratio:4/5;object-fit:cover;width:100%;background:var(--soft)}
+.social figure{margin:0;display:flex;flex-direction:column;gap:10px}
+.social figcaption{font-size:14px;color:var(--muted)}
+@media (max-width:900px){.social{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.stage{background:#07112A;border-radius:var(--r);padding:32px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;color:#C9D2E6}
+.stage .col{display:flex;flex-direction:column;gap:28px;min-width:0}
+.stage .tall{width:160px}
+.stage .row{display:flex;gap:28px;flex-wrap:wrap;align-items:flex-start}
+.bn{display:flex;flex-direction:column;gap:10px;min-width:0;max-width:100%}
+.bn .frame{position:relative;overflow:hidden;border-radius:6px;background:#00133B}
+.bn iframe{border:0;display:block;transform-origin:0 0;position:absolute;left:0;top:0}
+.bn .cap{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13px}
+.replay{font:500 12px var(--font);color:#fff;background:rgba(255,255,255,.08);border:0;border-radius:999px;padding:5px 12px;cursor:pointer}
+.replay:hover{background:rgba(255,255,255,.16)}
+@media (max-width:860px){.stage{grid-template-columns:1fr;padding:20px}.stage .tall{display:none}}
+.specs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-top:20px}
+.specs div{display:flex;flex-direction:column;gap:4px;padding-top:14px;border-top:1px solid var(--line)}
+.specs span{font-size:15px}
+@media (max-width:760px){.specs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.list{list-style:none;margin:0;padding:0}
+.list li{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;padding:22px 0;border-top:1px solid var(--line)}
+.list li:last-child{border-bottom:1px solid var(--line)}
+.list li > span:first-child{color:var(--muted);font-size:15px}
+@media (max-width:640px){.list li{grid-template-columns:1fr;gap:4px}}
+
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:stretch}
+.two .panel{padding:36px;display:flex;flex-direction:column;gap:18px}
+.phone-shot{background:var(--soft);border-radius:var(--r);display:flex;align-items:center;justify-content:center;padding:40px 24px}
+.phone-shot img{width:min(280px,100%);border-radius:28px;box-shadow:0 24px 50px -20px rgba(17,18,20,.4)}
+@media (max-width:860px){.two{grid-template-columns:1fr}}
+.nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.nums strong{display:block;font-size:clamp(30px,3.4vw,42px);letter-spacing:-.04em;font-variant-numeric:tabular-nums;line-height:1.1}
+.nums span{font-size:14px;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{font-size:14px;padding:6px 12px;background:var(--soft);border-radius:999px;color:var(--muted)}
+.textlink{font-weight:500;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;width:max-content}
+.textlink:hover{border-color:var(--text)}
+
+/* experience */
+.xp li{grid-template-columns:200px minmax(0,1fr) auto}
+.xp b{display:block;font-size:20px;letter-spacing:-.02em;font-weight:700}
+.role{display:flex;gap:16px;align-items:center}
+.role > span{min-width:0}
+.logo{flex:none;width:48px;height:48px;border-radius:12px;object-fit:cover}
+.logo.txt{display:grid;place-items:center;background:var(--soft);color:var(--muted);font-weight:700;font-size:15px}
+.chip{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--muted)}
+.hero .who .chip img{width:20px;height:20px;border-radius:6px}
+.group{display:flex;align-items:center;gap:16px;margin-top:20px;padding:18px 20px;background:var(--surface);border-radius:18px}
+.group img{width:44px;height:44px;border-radius:12px;flex:none}
+.group p{font-size:15px;color:var(--muted)}
+.group b{color:var(--text);font-weight:600}
+.xp small{font-size:15px;color:var(--muted)}
+.xp .loc{color:var(--muted);font-size:15px;text-align:right}
+@media (max-width:640px){.xp li{grid-template-columns:1fr}.xp .loc{text-align:left}}
+
+.skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.skills .panel{padding:28px;display:flex;flex-direction:column;gap:14px}
+.skills h3{font-size:22px;letter-spacing:-.02em}
+.skills ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;color:var(--muted);font-size:15px}
+@media (max-width:860px){.skills{grid-template-columns:1fr}}
+
+.contact{padding-block:140px 100px}
+.contact h2{font-size:clamp(44px,7vw,96px);max-width:14ch}
+.contact .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+.contact .pill{padding:14px 24px;font-size:16px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-block:28px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+
+.backbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-block:12px;border-bottom:1px solid var(--line);font-size:15px;font-weight:500}
+.backbar a{text-decoration:none;color:var(--muted)}
+.backbar a:hover{color:var(--text)}
+.backbar .next{display:flex;gap:20px}
+@media (max-width:600px){.backbar .next{display:none}}
+.steps{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:24px}
+.step{display:inline-flex;align-items:center;gap:10px;padding:8px 18px 8px 8px;background:var(--surface);border-radius:999px;font-weight:500;font-size:16px;box-shadow:0 1px 2px rgba(17,18,20,.06)}
+.step i{font-style:normal;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--on-ink);font-size:13px;font-weight:600}
+.steps .arrow{color:var(--faint)}
+.laptop{position:relative;padding:0 clamp(0px,4vw,64px) 56px}
+.laptop .visit{bottom:0}
+.laptop img{width:100%;height:auto;filter:drop-shadow(0 28px 36px rgba(17,18,20,.16))}
+.two.solo{grid-template-columns:1fr}
+.al-feature{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.al-feature img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px;box-shadow:0 12px 28px -14px rgba(17,18,20,.35)}
+@media (max-width:760px){.al-feature{grid-template-columns:1fr 1fr}.al-feature img:first-child{grid-column:1/-1}}
+.tm-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+@media (max-width:760px){.tm-grid{grid-template-columns:1fr}}
+.nextcase{display:flex;flex-direction:column;gap:6px;margin-top:120px;padding:40px;border-radius:var(--r);background:var(--surface);text-decoration:none;color:inherit}
+.nextcase b{font-size:clamp(32px,4vw,52px);letter-spacing:-.03em}
+.nextcase:hover b{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px}
+
+/* category stacks */
+.stacks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px 32px;margin-top:56px}
+.stack{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:18px}
+.stack .deck{position:relative;aspect-ratio:4/5;margin:6% 12% 0 4%}
+.stack .card{position:absolute;inset:0;border-radius:18px;overflow:hidden;background:var(--soft);box-shadow:0 2px 6px rgba(17,18,20,.08),0 18px 36px -16px rgba(17,18,20,.35);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.stack .card img{width:100%;height:100%;object-fit:cover;display:block}
+.stack .card.c3{transform:translate(18%,-4%) rotate(9deg)}
+.stack .card.c2{transform:translate(9%,-2%) rotate(4deg)}
+.stack .card.c1{transform:rotate(-3deg)}
+.stack:hover .card.c3,.stack:focus-visible .card.c3{transform:translate(26%,-6%) rotate(13deg)}
+.stack:hover .card.c2,.stack:focus-visible .card.c2{transform:translate(13%,-3%) rotate(6deg)}
+.stack:hover .card.c1,.stack:focus-visible .card.c1{transform:translate(-3%,-2%) rotate(-5deg)}
+.stack .card.empty{display:grid;place-items:center;color:var(--faint);font-size:14px;font-weight:500;border:1.5px dashed var(--line);box-shadow:none;background:var(--surface)}
+.stack .meta2{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.stack .meta2 b{font-weight:600;font-size:17px;letter-spacing:-.01em}
+.stack .meta2 span{font-size:14px;color:var(--muted)}
+.stack:focus-visible{outline:none}
+.stack-wrap{display:flex;flex-direction:column;gap:6px;min-width:0}
+.stack-link{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;width:max-content}
+.stack-link:hover{color:var(--text);text-decoration:underline}
+.lb-actions{display:flex;align-items:center;gap:10px}
+.stack:focus-visible .meta2 b{text-decoration:underline}
+@media (max-width:900px){.stacks{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 20px}}
+
+/* lightbox */
+[hidden]{display:none!important}
+.lb{position:fixed;inset:0;z-index:50;background:var(--bg);overflow-y:auto;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.lb-top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;padding-block:32px 28px;position:sticky;top:0;background:var(--bg);z-index:2}
+.lb-top h2{font-size:clamp(30px,4vw,48px);margin-top:6px}
+.lb-btn{all:unset;cursor:pointer;flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--surface);color:var(--text);font-size:18px;box-shadow:0 1px 3px rgba(17,18,20,.12)}
+.lb-btn:hover{transform:scale(1.05)}
+.lb-btn:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+.lb-grid{columns:3 280px;column-gap:20px;padding-block:0 64px}
+.lb-grid button{all:unset;cursor:zoom-in;display:block;width:100%;margin:0 0 20px;break-inside:avoid;border-radius:16px;overflow:hidden;background:var(--soft);box-shadow:0 1px 2px rgba(17,18,20,.06),0 12px 28px -14px rgba(17,18,20,.3);transition:transform .2s}
+.lb-grid button:hover{transform:translateY(-3px)}
+.lb-grid button:focus-visible{outline:2px solid var(--text);outline-offset:3px}
+.lb-grid img{width:100%;height:auto;display:block}
+.lb-view{position:fixed;inset:0;z-index:3;background:rgba(10,11,13,.94);display:flex;align-items:center;justify-content:center;gap:16px;padding:72px max(16px,env(safe-area-inset-right,0px)) 56px max(16px,env(safe-area-inset-left,0px))}
+.lb-grid.is-banners{columns:auto;display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start}
+.lb-grid.is-banners button{flex:none;margin:0;background:transparent;box-shadow:none;border-radius:0;display:flex;flex-direction:column;gap:10px}
+.bn-box{position:relative;display:block;width:100%;overflow:hidden;border-radius:8px;box-shadow:0 12px 28px -14px rgba(17,18,20,.4);pointer-events:none}
+.bn-box iframe{position:absolute;left:0;top:0;border:0;transform-origin:0 0}
+.bn-cap{font-size:13px;color:var(--muted)}
+.lb-grid button{position:relative}
+.play-badge{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:rgba(10,11,13,.6);color:#fff;font-size:20px;padding-left:4px;backdrop-filter:blur(6px)}
+.lb-vid{height:100%;display:flex;align-items:center;justify-content:center;min-width:0}
+.lb-vid video{max-height:100%;max-width:100%;border-radius:12px;background:#000}
+.lb-html{position:relative;overflow:hidden;border-radius:8px;flex:none}
+.lb-html iframe{position:absolute;left:0;top:0;border:0;transform-origin:0 0}
+.lb-view img{max-width:min(100%,1100px);max-height:100%;object-fit:contain;border-radius:12px;min-width:0}
+.lb-view .lb-btn{background:rgba(255,255,255,.12);color:#fff;box-shadow:none}
+.lb-x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 16px);right:max(16px,env(safe-area-inset-right,0px))}
+.lb-count{position:absolute;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);left:0;right:0;text-align:center;color:#A9ADB5;font-size:14px}
+@media (max-width:600px){.lb-grid{columns:2;column-gap:12px}.lb-grid button{margin-bottom:12px;border-radius:12px}#lb-prev,#lb-next{display:none}}
+</style>
+</head>
+<body>
+
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="me" href="#top">Bojan Trajkovski</a>
+    <ul>
+      <li class="hide"><a href="#servx">ServX</a></li>
+      <li class="hide"><a href="#highbet">HighBet</a></li>
+      <li class="hide"><a href="#trustedmalta">Trusted Malta</a></li>
+      <li class="hide"><a href="#visio">Visio</a></li>
+      <li class="hide"><a href="#affiliatepark">AffiliatePark</a></li>
+      <li class="hide"><a href="#betjara">BetJara</a></li>
+      <li class="hide"><a href="#avidlionz">Avid Lionz</a></li>
+      <li class="hide"><a href="#about">About</a></li>
+      <li><a class="pill" href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div id="backbar" class="backbar" hidden><div class="wrap"><a href="#work">← All products</a><span class="next"><a href="#servx">ServX</a><a href="#highbet">HighBet</a><a href="#trustedmalta">Trusted Malta</a><a href="#visio">Visio</a><a href="#affiliatepark">AffiliatePark</a><a href="#betjara">BetJara</a><a href="#avidlionz">Avid Lionz</a></span></div></div>
+
+<header class="hero home-view" id="top">
+  <div class="wrap">
+    <div class="who">
+      <img src="img-portrait.webp" alt="Bojan Trajkovski">
+      <div><b>Bojan Trajkovski</b><span class="chip"><img src="img-avidlionz.webp" alt="">Lead Designer at Avid Lionz, Malta</span></div>
+    </div>
+    <h1>Product and brand design, <span>built down to the last pixel of code.</span></h1>
+    <p class="sub">I'm a graphic designer and frontend developer. I design mobile apps, websites and campaign creative for iGaming and service brands, then build the parts that ship: landing pages, HTML5 ads and app interfaces.</p>
+    <div class="ctas">
+      <a class="pill" href="#work">View products</a>
+      <a class="pill ghost" href="https://www.linkedin.com/in/bojan-trajkovski-bab00b218/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+    <div class="meta">
+      <div><span class="eyebrow">Now</span><strong>Avid Lionz, iGaming group</strong></div>
+      <div><span class="eyebrow">Before</span><strong>HighBet, Park Limited</strong></div>
+      <div><span class="eyebrow">Focus</span><strong>Apps, web, iGaming creative</strong></div>
+      <div><span class="eyebrow">Languages</span><strong>English, Macedonian</strong></div>
+    </div>
+  </div>
+</header>
+
+<section id="work" class="home-view">
+  <div class="wrap">
+    <h2 class="apps-title">Products</h2>
+    <div class="apps">
+      <a class="app" href="#servx"><span class="icon servx"><img src="img-servx-logo.webp" alt=""></span><span class="name">ServX</span></a>
+      <a class="app" href="#highbet"><span class="icon highbet"><img src="img-highbet-logo.webp" alt=""></span><span class="name">HighBet</span></a>
+      <a class="app" href="#trustedmalta"><span class="icon trustedmalta"><img src="img-trustedmalta-logo.webp" alt=""></span><span class="name">Trusted Malta</span></a>
+      <a class="app" href="#visio"><span class="icon visio"><img src="img-visio-icon.webp" alt=""></span><span class="name">Visio</span></a>
+      <a class="app" href="#affiliatepark"><span class="icon affiliatepark"><img src="img-affiliatepark-logo.webp" alt=""></span><span class="name">AffiliatePark</span></a>
+      <a class="app" href="#betjara"><span class="icon betjara"><img src="img-betjara-logo.webp" alt=""></span><span class="name">BetJara</span></a>
+      <a class="app" href="#avidlionz"><span class="icon avidlionz"><img src="img-avidlionz-icon.webp" alt=""></span><span class="name">Avid Lionz</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+
+<!-- SERVX -->
+<section id="servx" class="product" data-title="ServX" style="padding-top:48px" hidden>
+  <div class="wrap">
+    <div class="case-top">
+      <div>
+        <p class="eyebrow" style="display:flex;align-items:center;gap:10px"><img src="img-servx-logo.webp" alt="" style="width:28px;height:28px;border-radius:8px">Case study 1 · Own product</p>
+        <h2 style="margin-top:14px">ServX</h2>
+        <p class="lead">A marketplace app for home services in Malta. Customers book cleaners, plumbers, electricians, AC technicians and pet carers in minutes. Providers get jobs, manage their schedule and get paid in one place.</p>
+      </div>
+      <div class="facts">
+        <div><span class="eyebrow">Role</span><span>Founder, product designer</span></div>
+        <div><span class="eyebrow">Scope</span><span>Brand, 2 mobile apps, website</span></div>
+        <div><span class="eyebrow">Platforms</span><span>iOS, Android, web</span></div>
+        <div><span class="eyebrow">Status</span><span>Website live, apps coming soon</span></div>
+      </div>
+    </div>
+
+    <div class="laptop site"><img src="img-laptop-servx.webp" alt="ServX website on a laptop: Where Human Needs Meet Human Skills" loading="lazy"><a class="visit" href="https://servx.mt/" target="_blank" rel="noopener">Visit website ↗</a></div>
+    <div class="stacks" data-brand="servx"></div>
+
+    <div class="steps" aria-label="How ServX works">
+      <span class="step"><i>1</i>Find</span><span class="arrow" aria-hidden="true">→</span>
+      <span class="step"><i>2</i>Book</span><span class="arrow" aria-hidden="true">→</span>
+      <span class="step"><i>3</i>Track</span><span class="arrow" aria-hidden="true">→</span>
+      <span class="step"><i>4</i>Review</span>
+    </div>
+
+    <div class="sub-head">
+      <h3>Customer app</h3>
+      <p>Built for a quick decision. The home screen leads with location, search and the most-booked categories. Every provider card shows rating, completed jobs and hourly price, so people can compare without opening a profile.</p>
+    </div>
+    <div class="rail" tabindex="0" aria-label="Customer app screens">
+      <figure><img src="img-servx-u-home.webp" alt="Customer home screen with categories, top services and a promo package" loading="lazy"><figcaption>Home</figcaption></figure>
+      <figure><img src="img-servx-u-search.webp" alt="Search results with top rated cleaners and provider cards" loading="lazy"><figcaption>Search and compare</figcaption></figure>
+      <figure><img src="img-servx-u-map.webp" alt="Map of Sliema and Valletta for confirming the service address" loading="lazy"><figcaption>Confirm address</figcaption></figure>
+      <figure><img src="img-servx-u-booking.webp" alt="Request summary with provider, date, location and total of 100 euro" loading="lazy"><figcaption>Booking summary</figcaption></figure>
+      <figure><img src="img-servx-u-orders.webp" alt="Order history list with completed jobs and leave review buttons" loading="lazy"><figcaption>Order history</figcaption></figure>
+      <figure><img src="img-servx-u-review.webp" alt="Rate the provider bottom sheet with stars and comment" loading="lazy"><figcaption>Rate the job</figcaption></figure>
+    </div>
+
+    <div class="sub-head">
+      <h3>Provider app</h3>
+      <p>A work tool, not a storefront. Earnings sit at the top on a deep navy header. Below it, jobs are sorted by urgency: what's in progress, what's next, and timed urgent requests in a bright card that's hard to miss.</p>
+    </div>
+    <div class="rail dark" tabindex="0" aria-label="Provider app screens">
+      <figure><img src="img-servx-p-home.webp" alt="Provider home with total earnings, next scheduled job and an urgent request" loading="lazy"><figcaption>Dashboard</figcaption></figure>
+      <figure><img src="img-servx-p-progress.webp" alt="Provider home with a job in progress and a mark as completed button" loading="lazy"><figcaption>Job in progress</figcaption></figure>
+      <figure><img src="img-servx-p-jobs.webp" alt="Jobs list with pending requests and countdown timers" loading="lazy"><figcaption>Jobs with timers</figcaption></figure>
+      <figure><img src="img-servx-p-booking.webp" alt="Booking details with customer, schedule, location and secured payout" loading="lazy"><figcaption>Booking details</figcaption></figure>
+      <figure><img src="img-servx-p-earnings.webp" alt="Earnings screen with gross, net, refunds and completed bookings" loading="lazy"><figcaption>Earnings</figcaption></figure>
+    </div>
+
+    <div class="sub-head">
+      <h3>Website</h3>
+      <p>The site speaks to both sides of the marketplace. It has two calls to action from the first screen: Find Services and Become a provider. Real photography for each trade and reviews by service category build trust before the apps launch.</p>
+    </div>
+    <div class="duo">
+      <div class="shot"><img src="img-servx-w-services.webp" alt="Our services section with photo cards for cleaners, plumbers, electricians and technicians" loading="lazy"></div>
+      <div class="shot"><img src="img-servx-w-reviews.webp" alt="Loved by our community section with review cards" loading="lazy"></div>
+    </div>
+    <div class="caption"><span>Services and community sections</span><span>Designed in Figma, built for desktop and mobile</span></div>
+  </div>
+  <div class="wrap"><a class="nextcase" href="#highbet"><span class="eyebrow">Next product</span><b>HighBet →</b></a></div>
+</section>
+
+<!-- HIGHBET -->
+<section id="highbet" class="product" data-title="HighBet" style="padding-top:48px" hidden>
+  <div class="wrap">
+    <div class="case-top">
+      <div>
+        <p class="eyebrow" style="display:flex;align-items:center;gap:10px"><img src="img-highbet-logo.webp" alt="" style="width:28px;height:28px;border-radius:8px">Case study 2 · iGaming · <a class="textlink" href="https://www.linkedin.com/company/highbet/" target="_blank" rel="noopener">LinkedIn ↗</a></p>
+        <h2 style="margin-top:14px">HighBet</h2>
+        <p class="lead">UK sportsbook and online casino. I joined in 2024 and led the design team from mid 2025, owning weekly social content, acquisition campaigns and animated display ads.</p>
+      </div>
+      <div class="facts">
+        <div><span class="eyebrow">Role</span><span>Lead Graphic Designer / Frontend Developer</span></div>
+        <div><span class="eyebrow">Period</span><span>Feb 2024 – Jan 2026</span></div>
+        <div><span class="eyebrow">Scope</span><span>Social, display ads, web</span></div>
+        <div><span class="eyebrow">Market</span><span>United Kingdom</span></div>
+      </div>
+    </div>
+
+    <div><div class="laptop site"><img src="img-laptop-highbet.webp" alt="HighBet UK website on a laptop with promotions and sportsbook" loading="lazy"><a class="visit" href="https://www.highbet.co.uk/" target="_blank" rel="noopener">Visit website ↗</a></div>
+    <div class="stacks" data-brand="highbet"></div></div>
+
+    <div class="sub-head">
+      <h3>HTML5 banner suite</h3>
+      <p>One storyboard adapted to five IAB sizes and hand-coded in HTML and CSS. Each banner runs a logo intro, the offer, the game and an end card. These are the live files, not recordings.</p>
+    </div>
+    <div class="stage">
+      <div class="col tall">
+        <div class="bn" data-w="160" data-h="600" data-src="banner-160x600.html"><div class="frame"></div><div class="cap"><span>160×600</span><button class="replay" type="button">Replay</button></div></div>
+      </div>
+      <div class="col">
+        <div class="bn" data-w="970" data-h="250" data-src="banner-970x250.html"><div class="frame"></div><div class="cap"><span>970×250 Billboard</span><button class="replay" type="button">Replay</button></div></div>
+        <div class="row">
+          <div class="bn" data-w="300" data-h="250" data-src="banner-300x250.html"><div class="frame"></div><div class="cap"><span>300×250 MPU</span><button class="replay" type="button">Replay</button></div></div>
+          <div class="bn" data-w="320" data-h="50" data-src="banner-320x50.html"><div class="frame"></div><div class="cap"><span>320×50 Mobile</span><button class="replay" type="button">Replay</button></div></div>
+        </div>
+        <div class="bn" data-w="970" data-h="90" data-src="banner-970x90.html"><div class="frame"></div><div class="cap"><span>970×90 Leaderboard</span><button class="replay" type="button">Replay</button></div></div>
+      </div>
+    </div>
+    <div class="specs">
+      <div><span class="eyebrow">Build</span><span>HTML and CSS keyframes</span></div>
+      <div><span class="eyebrow">Weight</span><span>About 11 KB HTML per size</span></div>
+      <div><span class="eyebrow">Delivery</span><span>clickTag ready for ad servers</span></div>
+      <div><span class="eyebrow">Compliance</span><span>18+, T&amp;Cs and GambleAware on every frame</span></div>
+    </div>
+
+    <div class="sub-head">
+      <h3>Web and strategy</h3>
+      <p>Work beyond social and ads.</p>
+    </div>
+    <ul class="list">
+      <li><span>Landing pages</span><span>World Cup 2026 acquisition pages built on HighBet's design system: Montserrat, the navy and blue palette, and live-site components.</span></li>
+      <li><span>Localisation</span><span>Casino pages translated from French to English without changing structure or layout.</span></li>
+      <li><span>Strategy</span><span>2026–2028 roadmap and a lean remote-team plan for Chile, Malta, Finland, New Zealand and Canada.</span></li>
+      <li><span>On-site</span><span>Promotion tiles, hero sliders and responsible-gambling banners for the sportsbook and casino lobby.</span></li>
+    </ul>
+  </div>
+  <div class="wrap"><a class="nextcase" href="#trustedmalta"><span class="eyebrow">Next product</span><b>Trusted Malta →</b></a></div>
+</section>
+
+<!-- TRUSTED MALTA -->
+<section id="trustedmalta" class="product" data-title="Trusted Malta" style="padding-top:48px" hidden>
+  <div class="wrap">
+    <div class="case-top">
+      <div>
+        <p class="eyebrow" style="display:flex;align-items:center;gap:10px"><img src="img-trustedmalta-logo.webp" alt="" style="width:28px;height:28px;border-radius:8px">Case study 3 · Own product</p>
+        <h2 style="margin-top:14px">Trusted Malta</h2>
+        <p class="lead">An independent review platform for Malta and Gozo. People search local businesses, read real experiences and leave reviews. Business owners claim their profile and build a reputation from genuine customer feedback.</p>
+      </div>
+      <div class="facts">
+        <div><span class="eyebrow">Role</span><span>Founder, product designer, frontend</span></div>
+        <div><span class="eyebrow">Scope</span><span>Brand, web platform, social</span></div>
+        <div><span class="eyebrow">Market</span><span>Malta and Gozo</span></div>
+        <div><span class="eyebrow">Goal</span><span>10,000+ businesses listed</span></div>
+      </div>
+    </div>
+
+    <div class="laptop site"><img src="img-laptop-trustedmalta.webp" alt="Trusted Malta website on a laptop: Find businesses you can trust in Malta" loading="lazy"><a class="visit" href="https://malta-trusted.vercel.app/" target="_blank" rel="noopener">Visit website ↗</a></div>
+    <div class="stacks" data-brand="trustedmalta"></div>
+
+    <div class="flow">
+      <div><b>For people</b><h4>Search and compare</h4><p>Find a business by name or service, browse categories like restaurants, hairdressers, gyms and mechanics, and compare ratings.</p></div>
+      <div><b>For businesses</b><h4>Claim your profile</h4><p>Owners claim their listing, answer reviews and turn good service into visible proof for the next customer.</p></div>
+      <div><b>Trust</b><h4>Every review is checked</h4><p>Open to everyone, no pay-to-play. Reviews are screened to spot fakes, and each listing also shows its Google rating for context.</p></div>
+    </div>
+
+    <div class="sub-head">
+      <h3>Design decisions</h3>
+      <p>Built to feel as credible as the big review sites while staying local.</p>
+    </div>
+    <ul class="list">
+      <li><span>Identity</span><span>A star cut into a speech-bubble shape in fresh green on near-black. It reads as both "rating" and "voice", and stays legible as a small app icon.</span></li>
+      <li><span>Homepage</span><span>Search first: one field, one green button, and quick links to write a review or claim a business, over a photo of a real Maltese street.</span></li>
+      <li><span>Listings</span><span>"Best in" rows per category with logo, location, platform score and Google rating side by side, so new listings never look empty.</span></li>
+      <li><span>Growth</span><span>Organic social on @trustedmalta with review-led content that speaks to both customers and business owners.</span></li>
+    </ul>
+  </div>
+  <div class="wrap"><a class="nextcase" href="#visio"><span class="eyebrow">Next product</span><b>Visio →</b></a></div>
+</section>
+
+<!-- VISIO -->
+<section id="visio" class="product" data-title="Visio" style="padding-top:48px" hidden>
+  <div class="wrap">
+    <div class="case-top">
+      <div>
+        <p class="eyebrow" style="display:flex;align-items:center;gap:10px"><img src="img-visio-icon.webp" alt="" style="width:28px;height:28px;border-radius:8px">Case study 4 · Corporate advisory</p>
+        <h2 style="margin-top:14px">Visio Consultancy</h2>
+        <p class="lead">A Malta-based corporate advisory firm covering legal, accounting and HR under one roof: company formation, compliance, payroll and work permits for Maltese and international businesses.</p>
+      </div>
+      <div class="facts">
+        <div><span class="eyebrow">Role</span><span>Web design and frontend</span></div>
+        <div><span class="eyebrow">Scope</span><span>Website, service pages, insights</span></div>
+        <div><span class="eyebrow">Market</span><span>Malta</span></div>
+        <div><span class="eyebrow">Audience</span><span>Founders, SMEs, international firms</span></div>
+      </div>
+    </div>
+
+    <div class="laptop site"><img src="img-laptop-visio.webp" alt="Visio Consultancy website on a laptop: Corporate advisory in Malta, under one roof" loading="lazy"><a class="visit" href="https://visio-consultancy.com/" target="_blank" rel="noopener">Visit website ↗</a></div>
+
+    <div class="nums" style="margin-top:8px">
+      <div><strong>25+</strong><span>industries served</span></div>
+      <div><strong>150+</strong><span>clients advised</span></div>
+      <div><strong>3</strong><span>pillars: legal, accounting, HR</span></div>
+    </div>
+
+    <div class="sub-head">
+      <h3>Design decisions</h3>
+      <p>A professional-services site that has to feel established and trustworthy from the first screen.</p>
+    </div>
+    <ul class="list">
+      <li><span>Identity</span><span>Deep navy with a warm gold accent and a serif wordmark, the visual language of a law and finance practice.</span></li>
+      <li><span>Homepage</span><span>A rotating hero per service line (company formation, payroll and compliance, legal) with a primary "Book a Consultation" action on every slide.</span></li>
+      <li><span>Structure</span><span>Three service pillars with their own pages, solution pages for common needs like company formation and HR outsourcing, plus an Insights blog on Malta tax and regulation.</span></li>
+      <li><span>Trust</span><span>Proof numbers under the hero and named advisors with direct contact details.</span></li>
+    </ul>
+    <div class="stacks" data-brand="visio"></div>
+  </div>
+  <div class="wrap"><a class="nextcase" href="#affiliatepark"><span class="eyebrow">Next product</span><b>AffiliatePark →</b></a></div>
+</section>
+
+<!-- AFFILIATEPARK -->
+<section id="affiliatepark" class="product" data-title="AffiliatePark" style="padding-top:48px" hidden>
+  <div class="wrap">
+    <div class="two solo">
+      <div class="panel">
+        <p class="eyebrow" style="display:flex;align-items:center;gap:10px"><img src="img-affiliatepark-logo.webp" alt="" style="width:28px;height:28px;border-radius:8px">Case study 5 · Partner marketing</p>
+        <h2 style="font-size:clamp(36px,4.4vw,56px)">AffiliatePark</h2>
+        <p class="muted">The affiliate programme behind HighBet. The audience is comparison sites and casino publishers deciding which brand to promote, so the site leads with the commission offer, partner proof and a short sign-up.</p>
+        <div class="nums">
+          <div><strong>500+</strong><span>affiliates</span></div>
+          <div><strong>2000+</strong><span>games</span></div>
+          <div><strong>2</strong><span>brands</span></div>
+        </div>
+        <div class="tags"><span>Brand</span><span>Web design</span><span>Partner assets</span></div>
+        <a class="textlink" href="https://affiliatepark.com/" target="_blank" rel="noopener">affiliatepark.com ↗</a>
+      </div>
+    </div>
+    <div style="margin-top:20px"><div class="laptop site"><img src="img-laptop-affiliatepark.webp" alt="AffiliatePark website on a laptop: Start making money, become our affiliate" loading="lazy"><a class="visit" href="https://affiliatepark.com/" target="_blank" rel="noopener">Visit website ↗</a></div>
+    <div class="stacks" data-brand="affiliatepark"></div></div>
+  </div>
+  <div class="wrap"><a class="nextcase" href="#betjara"><span class="eyebrow">Next product</span><b>BetJara →</b></a></div>
+</section>
+
+<!-- BETJARA -->
+<section id="betjara" class="product" data-title="BetJara" style="padding-top:48px" hidden>
+  <div class="wrap">
+    <div class="case-top">
+      <div>
+        <p class="eyebrow" style="display:flex;align-items:center;gap:10px"><img src="img-betjara-logo.webp" alt="" style="width:28px;height:28px;border-radius:8px">Case study 6 · iGaming · Avid Lionz brand</p>
+        <h2 style="margin-top:14px">BetJara</h2>
+        <p class="lead">A licensed Nigerian sportsbook and casino from the Avid Lionz group. "Jara" is Nigerian slang for a little extra on top, and the whole brand plays on it: more bonuses, more rewards, more reasons to play.</p>
+      </div>
+      <div class="facts">
+        <div><span class="eyebrow">Role</span><span>Graphic design and frontend</span></div>
+        <div><span class="eyebrow">Market</span><span>Nigeria</span></div>
+        <div><span class="eyebrow">Products</span><span>Sports, live, casino, crash, virtuals</span></div>
+        <div><span class="eyebrow">Platforms</span><span>Web and mobile app</span></div>
+      </div>
+    </div>
+
+    <div class="two solo">
+      <div class="panel">
+        <p class="eyebrow">The offer</p>
+        <h3 style="font-size:clamp(26px,2.8vw,36px)">Get jara from day one</h3>
+        <div class="nums">
+          <div><strong>1,000+</strong><span>casino games</span></div>
+          <div><strong>3x</strong><span>first deposit</span></div>
+          <div><strong>60%</strong><span>cashback on virtuals</span></div>
+        </div>
+        <p class="muted">Welcome bonuses, cashback, boosted virtual football multiples, early cash out, birthday bonus, instant withdrawals and free tips on Telegram. The voice stays local and playful, in Nigerian Pidgin where it fits.</p>
+        <div class="tags"><span>Promo banners</span><span>Web UI</span><span>App UI</span><span>Product improvements</span></div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px"><div class="laptop site"><img src="img-laptop-betjara.webp" alt="BetJara website on a laptop with welcome bonus banner and lobby" loading="lazy"><a class="visit" href="https://betjara.ng/en/" target="_blank" rel="noopener">Visit website ↗</a></div>
+    <div class="stacks" data-brand="betjara"></div></div>
+
+    <div class="sub-head">
+      <h3>My work</h3>
+      <p>Design and frontend for the brand as part of the Avid Lionz team.</p>
+    </div>
+    <ul class="list">
+      <li><span>Promotions</span><span>Welcome-bonus hero banners and promo creative for sports and casino, with 18+ and responsible-play marks built in.</span></li>
+      <li><span>Product UX</span><span>Proposed and specced skeleton loaders for the home screen on web and app, so the lobby feels instant on slower Nigerian mobile connections.</span></li>
+      <li><span>Lobby</span><span>Category tiles for Sport, LiveSport, Casino, Live Casino, Fast Games, Crash Games and Virtuals in the brand's green and slate palette.</span></li>
+    </ul>
+  </div>
+  <div class="wrap"><a class="nextcase" href="#avidlionz"><span class="eyebrow">Next product</span><b>Avid Lionz →</b></a></div>
+</section>
+
+<!-- AVID LIONZ -->
+<section id="avidlionz" class="product" data-title="Avid Lionz" style="padding-top:48px" hidden>
+  <div class="wrap">
+    <div class="case-top">
+      <div>
+        <p class="eyebrow" style="display:flex;align-items:center;gap:10px"><img src="img-avidlionz-icon.webp" alt="" style="width:28px;height:28px;border-radius:8px">Case study 7 · iGaming group · Current role</p>
+        <h2 style="margin-top:14px">Avid Lionz</h2>
+        <p class="lead">A Malta-based iGaming group behind online casino, sports betting and affiliate brands, including HighBet, BetJara and Affiliate Park. I lead graphic design and frontend across the group's brands, and design the group's own employer brand.</p>
+      </div>
+      <div class="facts">
+        <div><span class="eyebrow">Role</span><span>Lead Graphic Designer / Frontend Developer</span></div>
+        <div><span class="eyebrow">Since</span><span>January 2026</span></div>
+        <div><span class="eyebrow">Brands</span><span>HighBet, BetJara, Affiliate Park</span></div>
+        <div><span class="eyebrow">Team</span><span>11–50 people, Malta</span></div>
+      </div>
+    </div>
+
+    <div class="al-feature">
+      <img src="img-al-social-1.webp" alt="A career that fits your life and ambitions, Avid Lionz recruitment post" loading="lazy">
+      <img src="img-al-social-7.webp" alt="2025 Wrapped: 7K coffees, 14 new features, 15 team lunches, 8K hours of deep focus" loading="lazy">
+      <img src="img-al-social-8.webp" alt="Our Values: honesty and transparency, humility, humanity, respect" loading="lazy">
+    </div>
+
+    <div class="sub-head">
+      <h3>Employer brand</h3>
+      <p>Recruitment and culture content for a growing team: a dark navy and mint system built from the lion-mark logo, with one headline, one photo and the URL on every post.</p>
+    </div>
+    <ul class="list">
+      <li><span>Careers</span><span>A benefits series covering hybrid work, the on-site office gym, health coverage and career growth.</span></li>
+      <li><span>Culture</span><span>Company values, a 2025 Wrapped recap and seasonal greetings for the team and partners.</span></li>
+      <li><span>Group brands</span><span>Design and frontend for HighBet, BetJara and Affiliate Park, all shown in their own case studies.</span></li>
+    </ul>
+    <div class="stacks" data-brand="avidlionz"></div>
+  </div>
+  <div class="wrap"><a class="nextcase" href="#servx"><span class="eyebrow">Next product</span><b>ServX →</b></a></div>
+</section>
+
+<section id="about" class="home-view">
+  <div class="wrap">
+    <div class="head"><h2>Experience</h2><a class="textlink" href="https://www.linkedin.com/in/bojan-trajkovski-bab00b218/" target="_blank" rel="noopener">Full profile on LinkedIn ↗</a></div>
+    <ul class="list xp">
+      <li><span>Jan 2026 – Present</span><span class="role"><img class="logo" src="img-avidlionz.webp" alt="Avid Lionz logo"><span><b>Lead Graphic Designer / Frontend Developer</b><small>Avid Lionz · iGaming group behind HighBet, Betjara and Affiliate Park</small></span></span><span class="loc">Malta</span></li>
+      <li><span>Jun 2025 – Jan 2026</span><span class="role"><img class="logo" src="img-highbet-logo.webp" alt="HighBet logo"><span><b>Lead Graphic Designer / Frontend Developer</b><small>HighBet · Full-time</small></span></span><span class="loc">Skopje, North Macedonia</span></li>
+      <li><span>Feb 2024 – Jun 2025</span><span class="role"><img class="logo" src="img-highbet-logo.webp" alt="HighBet logo"><span><b>Graphic Designer / Frontend Developer</b><small>HighBet · Full-time</small></span></span><span class="loc">Skopje, North Macedonia</span></li>
+      <li><span>Mar 2022 – Feb 2024</span><span class="role"><img class="logo" src="img-park-logo.webp" alt="Park Limited logo" style="border:1px solid var(--line)"><span><b>Graphic Designer / Frontend Developer</b><small>Park Limited · After Effects, video shooting</small></span></span><span class="loc">North Macedonia</span></li>
+    </ul>
+
+    <div class="head" style="margin-top:120px"><h2>What I do</h2></div>
+    <div class="skills">
+      <div class="panel"><h3>Product design</h3><ul><li>Mobile app UI, iOS and Android</li><li>Marketplace and two-sided flows</li><li>Websites and landing pages</li><li>Design systems in Figma</li></ul></div>
+      <div class="panel"><h3>Brand and campaigns</h3><ul><li>Art direction and social content</li><li>HTML5 animated display ads</li><li>Motion in After Effects</li><li>Video shooting and editing</li></ul></div>
+      <div class="panel"><h3>Frontend</h3><ul><li>HTML, CSS, JavaScript</li><li>React and React Native</li><li>Node.js, Express, Supabase</li><li>Vercel and Railway deploys</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact home-view">
+  <div class="wrap">
+    <p class="eyebrow">Contact</p>
+    <h2 style="margin-top:16px">Have a product or campaign to design?</h2>
+    <p class="muted" style="margin-top:20px;font-size:19px;max-width:48ch">I take on app, web and iGaming design projects, from first concept to the code that ships.</p>
+    <div class="ctas">
+      <a class="pill" href="https://www.linkedin.com/in/bojan-trajkovski-bab00b218/" target="_blank" rel="noopener">Message me on LinkedIn ↗</a>
+      <a class="pill ghost" href="https://servx.mt/" target="_blank" rel="noopener">See ServX live ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© 2026 Bojan Trajkovski</span><span>Malta · North Macedonia</span></div></footer>
+
+<script>
+(function(){
+  var items=[].slice.call(document.querySelectorAll('.bn'));
+  items.forEach(function(el){
+    var f=document.createElement('iframe');
+    f.src=el.dataset.src; f.width=el.dataset.w; f.height=el.dataset.h;
+    f.title='HighBet banner '+el.dataset.w+'×'+el.dataset.h; f.loading='lazy'; f.scrolling='no';
+    f.setAttribute('sandbox','allow-scripts allow-same-origin allow-popups');
+    el.querySelector('.frame').appendChild(f);
+    el.querySelector('.replay').addEventListener('click',function(){f.src=el.dataset.src+'?r='+Date.now();});
+  });
+  function fit(){
+    items.forEach(function(el){
+      var w=+el.dataset.w,h=+el.dataset.h;
+      var avail=el.closest('.col').clientWidth;
+      var s=Math.min(1,avail/w);
+      var fr=el.querySelector('.frame');
+      fr.style.width=(w*s)+'px'; fr.style.height=(h*s)+'px';
+      fr.firstChild.style.transform='scale('+s+')';
+    });
+  }
+  fit(); addEventListener('resize',fit);
+  var ids=['servx','highbet','affiliatepark','betjara','trustedmalta','avidlionz','visio'];
+  var home=[].slice.call(document.querySelectorAll('.home-view'));
+  var bar=document.getElementById('backbar');
+  function route(){
+    var h=location.hash.slice(1);
+    var isProduct=ids.indexOf(h)>=0;
+    home.forEach(function(el){el.hidden=isProduct;});
+    ids.forEach(function(x){document.getElementById(x).hidden=(x!==h);});
+    bar.hidden=!isProduct;
+    fit();
+    if(isProduct){ window.scrollTo(0,0); document.title=document.getElementById(h).dataset.title+' · Bojan Trajkovski'; }
+    else { document.title='Bojan Trajkovski'; var t=h&&document.getElementById(h); if(t) t.scrollIntoView(); }
+  }
+  addEventListener('hashchange',route); route();
+  if('ResizeObserver' in window) new ResizeObserver(fit).observe(document.querySelector('.stage'));
+})();
+</script>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lb-title">
+  <div class="lb-sheet">
+    <div class="lb-top wrap"><div><span class="eyebrow" id="lb-brand"></span><h2 id="lb-title"></h2></div><div class="lb-actions"><a class="pill" id="lb-link" href="#" target="_blank" rel="noopener" hidden></a><button class="lb-btn" id="lb-close" type="button" aria-label="Close">✕</button></div></div>
+    <div class="lb-grid wrap" id="lb-grid"></div>
+  </div>
+  <div class="lb-view" id="lb-view" hidden>
+    <button class="lb-btn lb-x" id="lb-back" type="button" aria-label="Back to all images">✕</button>
+    <button class="lb-btn" id="lb-prev" type="button" aria-label="Previous">←</button>
+    <img id="lb-img" alt=""><div id="lb-html" class="lb-html" hidden></div>
+    <button class="lb-btn" id="lb-next" type="button" aria-label="Next">→</button>
+    <span class="lb-count" id="lb-count"></span>
+  </div>
+</div>
+
+<script>
+/* Work galleries per brand. Add image paths to "items" to fill a category. */
+var GALLERY={
+  servx:[
+    {title:"Social media",link:"https://www.instagram.com/servx_eu/",linkLabel:"Instagram",items:["img-servx-social-1.webp","img-servx-social-2.webp","img-servx-social-3.webp","img-servx-social-4.webp","img-servx-social-5.webp","img-servx-social-6.webp","img-servx-social-7.webp","img-servx-social-8.webp","img-servx-social-9.webp","img-servx-social-10.webp","img-servx-social-11.webp"]},
+    {title:"App Store & Play Store",items:["img-servx-store-1.webp","img-servx-store-2.webp","img-servx-store-3.webp","img-servx-store-4.webp","img-servx-store-5.webp","img-servx-store-6.webp","img-servx-store-7.webp","img-servx-store-8.webp"]},
+    {title:"UI screenshots",items:["img-servx-u-home.webp","img-servx-u-search.webp","img-servx-u-map.webp","img-servx-u-booking.webp","img-servx-u-orders.webp","img-servx-u-review.webp","img-servx-p-home.webp","img-servx-p-progress.webp","img-servx-p-jobs.webp","img-servx-p-booking.webp","img-servx-p-earnings.webp"]},
+    {title:"Website",link:"https://servx.mt/",linkLabel:"servx.mt",items:["img-servx-web-home.webp","img-servx-web-services.webp","img-servx-web-seekers.webp","img-servx-web-providers.webp","img-servx-web-features.webp","img-servx-web-pricing.webp","img-servx-web-about.webp","img-servx-web-cleaners.webp"]}
+  ],
+  highbet:[
+    {title:"Social media",items:["img-hb-monster-quest.webp","img-hb-combo-arsenal.webp","img-hb-sports-tournament.webp","img-hb-puzzle.webp","img-hb-guess-character.webp","img-hb-combo-liverpool.webp"]},
+    {title:"App Store & Play Store",items:["img-hb-store-1.webp","img-hb-store-2.webp","img-hb-store-3.webp","img-hb-store-4.webp","img-hb-store-5.webp","img-hb-store-6.webp","img-hb-store-7.webp","img-hb-store-8.webp","img-hb-store-9.webp","img-hb-store-10.webp"]},
+    {title:"Mobile website",link:"https://www.highbet.co.uk/",linkLabel:"highbet.co.uk",items:["img-hb-mob-home.webp","img-hb-mob-casino.webp","img-hb-mob-promotions.webp"]},
+    {title:"Website",link:"https://www.highbet.co.uk/",linkLabel:"highbet.co.uk",items:["img-hb-web-home.webp","img-hb-web-casino.webp","img-hb-web-live-casino.webp","img-hb-web-promotions.webp"]},
+    {title:"HTML5 banners",items:["img-banners-thumb-300x250.webp","img-banners-thumb-160x600.webp","img-banners-thumb-970x250.webp","img-banners-thumb-320x50.webp","img-banners-thumb-970x90.webp"],html:[[300,250],[160,600],[970,250],[320,50],[970,90]],order:1}
+  ],
+  affiliatepark:[
+    {title:"Social media",items:[]},
+    {title:"Website",items:["img-laptop-affiliatepark.webp","img-site-affiliatepark.webp"]},
+    {title:"GIFs",items:[]}
+  ],
+  betjara:[
+    {title:"Social media",items:[]},
+    {title:"Website",items:["img-laptop-betjara.webp","img-bj-home.webp"]},
+    {title:"GIFs",items:[]}
+  ],
+  avidlionz:[
+    {title:"Social media",link:"https://www.linkedin.com/company/avidlionz/",linkLabel:"LinkedIn",items:["img-al-social-1.webp","img-al-social-2.webp","img-al-social-3.webp","img-al-social-4.webp","img-al-social-5.webp","img-al-social-6.webp","img-al-social-7.webp","img-al-social-8.webp"]}
+  ],
+  visio:[
+    {title:"Social media",link:"https://www.instagram.com/visioconsultancymalta/",linkLabel:"Instagram",items:["img-visio-social-1.webp","img-visio-social-2.webp","img-visio-social-3.webp","img-visio-social-4.webp","img-visio-social-5.webp","img-visio-social-6.webp","img-visio-social-7.webp","img-visio-social-8.webp","img-visio-social-9.webp","img-visio-social-10.webp","img-visio-social-11.webp"]},
+    {title:"Website",link:"https://visio-consultancy.com/",linkLabel:"visio-consultancy.com",items:["img-visio-web-home.webp","img-visio-web-payroll.webp","img-visio-web-services.webp","img-visio-web-about.webp"]}
+  ],
+  trustedmalta:[
+    {title:"Social media",link:"https://www.instagram.com/trustedmalta/",linkLabel:"Instagram",items:["img-tm-post-1.webp","img-tm-post-2.webp","img-tm-post-3.webp","img-tm-post-4.webp","img-tm-post-5.webp","img-tm-post-6.webp","img-tm-post-7.webp","img-tm-post-8.webp"]},
+    {title:"Website",link:"https://malta-trusted.vercel.app/",linkLabel:"Trusted Malta",items:["img-laptop-trustedmalta.webp","img-tm-home.webp","img-tm-listings.webp"]},
+    {title:"Videos",link:"https://www.instagram.com/trustedmalta/",linkLabel:"Instagram",items:["img-tm-vid-13oct_3-signs-fake-reviews.webp","img-tm-vid-15oct_10000-businesses.webp","img-tm-vid-19oct_top5-restaurants.webp","img-tm-vid-first-bad-review-in-history.webp"],video:["video-tm-13oct_3-signs-fake-reviews.mp4","video-tm-15oct_10000-businesses.mp4","video-tm-19oct_top5-restaurants.mp4","video-tm-first-bad-review-in-history.mp4"]}
+  ]
+};
+(function(){
+  var lb=document.getElementById('lb'),img=document.getElementById('lb-img');
+  var cur=null,idx=0,opener=null;
+  document.querySelectorAll('.stacks').forEach(function(box){
+    (GALLERY[box.dataset.brand]||[]).forEach(function(cat){
+      var b=document.createElement('button'); b.type='button'; b.className='stack';
+      var n=cat.items.length;
+      var deck='<span class="deck">';
+      for(var i=2;i>=0;i--){
+        var src=cat.items[i]||cat.items[0];
+        deck+= n? '<span class="card c'+(i+1)+'"><img src="'+src+'" alt="" loading="lazy"></span>'
+                : '<span class="card c'+(i+1)+' empty">'+(i===0?'Coming soon':'')+'</span>';
+      }
+      deck+='</span>';
+      b.innerHTML=deck+'<span class="meta2"><b>'+cat.title+'</b><span>'+(n? n+(cat.video?(n===1?' video':' videos'):(n===1?' image':' images')):'Soon')+'</span></span>';
+      b.setAttribute('aria-label',cat.title+(n? ', open '+n+' images':', coming soon'));
+      if(!n) b.disabled=true, b.style.cursor='default';
+      b.addEventListener('click',function(){ if(n) open(cat,0,b,box.dataset.brand); });
+      if(cat.link){var w=document.createElement('div');w.className='stack-wrap';box.appendChild(w);w.appendChild(b);var a=document.createElement('a');a.className='stack-link';a.href=cat.link;a.target='_blank';a.rel='noopener';a.textContent=(cat.linkLabel||'Instagram')+' ↗';w.appendChild(a);}
+      else box.appendChild(b);
+    });
+  });
+  var view=document.getElementById('lb-view'),grid=document.getElementById('lb-grid');
+  var names={servx:'ServX',highbet:'HighBet',affiliatepark:'AffiliatePark',betjara:'BetJara',trustedmalta:'Trusted Malta',avidlionz:'Avid Lionz',visio:'Visio'};
+  function show(i){
+    idx=(i+cur.items.length)%cur.items.length;
+    var hv=document.getElementById('lb-html');
+    if(cur.html){var d=cur.html[idx]; img.hidden=true; hv.hidden=false; hv.className='lb-html'; hv.dataset.w=d[0]; hv.dataset.h=d[1]; hv.innerHTML='<iframe src="banner-'+d[0]+'x'+d[1]+'.html?r='+Date.now()+'" width="'+d[0]+'" height="'+d[1]+'" scrolling="no" title="Banner '+d[0]+'×'+d[1]+'"></iframe>'; fitView();}
+    else if(cur.video){img.hidden=true; hv.hidden=false; hv.removeAttribute('style'); hv.className='lb-vid'; hv.innerHTML='<video src="'+cur.video[idx]+'" poster="'+cur.items[idx]+'" controls autoplay playsinline></video>';}
+    else {hv.hidden=true; hv.innerHTML=''; img.hidden=false; img.src=cur.items[idx]; img.alt=cur.title+' '+(idx+1);}
+    document.getElementById('lb-count').textContent=(idx+1)+' / '+cur.items.length;
+    var one=cur.items.length<2; document.getElementById('lb-prev').hidden=one; document.getElementById('lb-next').hidden=one;
+    view.hidden=false; document.getElementById('lb-back').focus();
+  }
+  function fitBn(){grid.querySelectorAll('.bn-box').forEach(function(b){var f=b.firstChild;f.style.transform='scale('+(b.clientWidth/f.width)+')';});}
+  function fitView(){var hv=document.getElementById('lb-html'),f=hv.firstChild;if(!f)return;var w=+hv.dataset.w,h=+hv.dataset.h;var s=Math.min((innerWidth-160)/w,(innerHeight-160)/h,2.2);if(innerWidth<600)s=Math.min((innerWidth-32)/w,(innerHeight-160)/h,2.2);hv.style.width=w*s+'px';hv.style.height=h*s+'px';f.style.transform='scale('+s+')';}
+  addEventListener('resize',function(){if(!lb.hidden){fitBn();fitView();}});
+  function hideView(){document.getElementById('lb-html').innerHTML='';view.hidden=true; var t=grid.children[idx]; if(t) t.focus();}
+  function open(cat,i,from,brand){
+    cur=cat; opener=from;
+    document.getElementById('lb-title').textContent=cat.title;
+    document.getElementById('lb-brand').textContent=names[brand]||'';
+    var lk=document.getElementById('lb-link'); if(cat.link){lk.href=cat.link;lk.textContent=(/instagram/i.test(cat.link)?'Follow on Instagram':/linkedin/i.test(cat.link)?'Follow on LinkedIn':'Visit '+(cat.linkLabel||'website'))+' ↗';lk.hidden=false;}else lk.hidden=true;
+    grid.innerHTML='';
+    cat.items.forEach(function(src,k){var t=document.createElement('button');t.type='button';t.setAttribute('aria-label','Open item '+(k+1));
+      if(cat.html){var d=cat.html[k];t.className='bn-tile';t.style.width='min(100%,'+d[0]+'px)';t.innerHTML='<span class="bn-box" style="aspect-ratio:'+d[0]+'/'+d[1]+'"><iframe src="banner-'+d[0]+'x'+d[1]+'.html" width="'+d[0]+'" height="'+d[1]+'" scrolling="no" tabindex="-1" title="Banner '+d[0]+'×'+d[1]+'"></iframe></span><span class="bn-cap">'+d[0]+'×'+d[1]+'</span>';}
+      else if(cat.video) t.innerHTML='<img src="'+src+'" alt="'+cat.title+' '+(k+1)+'" loading="lazy"><span class="play-badge" aria-hidden="true">▶</span>';
+      else t.innerHTML='<img src="'+src+'" alt="'+cat.title+' '+(k+1)+'" loading="lazy">';
+      t.onclick=function(){show(k)};grid.appendChild(t);});
+    grid.classList.toggle('is-banners',!!cat.html); requestAnimationFrame(fitBn);
+    view.hidden=true; lb.hidden=false; lb.scrollTop=0; document.body.style.overflow='hidden'; document.getElementById('lb-close').focus();
+  }
+  function close(){view.hidden=true;lb.hidden=true;document.body.style.overflow='';if(opener)opener.focus();}
+  document.getElementById('lb-close').onclick=close;
+  document.getElementById('lb-back').onclick=hideView;
+  document.getElementById('lb-prev').onclick=function(){show(idx-1)};
+  document.getElementById('lb-next').onclick=function(){show(idx+1)};
+  view.addEventListener('click',function(e){if(e.target===view)hideView();});
+  addEventListener('keydown',function(e){if(lb.hidden)return;
+    if(!view.hidden){if(e.key==='Escape')hideView();if(e.key==='ArrowLeft')show(idx-1);if(e.key==='ArrowRight')show(idx+1);}
+    else if(e.key==='Escape')close();});
+  addEventListener('hashchange',function(){if(!lb.hidden)close();});
+})();
+</script>
+
+</body>
+</html>
