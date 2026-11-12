@@ -285,6 +285,25 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
 .lb-x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 16px);right:max(16px,env(safe-area-inset-right,0px))}
 .lb-count{position:absolute;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);left:0;right:0;text-align:center;color:#A9ADB5;font-size:14px}
 @media (max-width:600px){.lb-grid{columns:2;column-gap:12px}.lb-grid button{margin-bottom:12px;border-radius:12px}#lb-prev,#lb-next{display:none}}
+
+/* contact modal */
+.cm{position:fixed;inset:0;z-index:60;background:rgba(10,11,13,.55);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:calc(env(safe-area-inset-top,0px) + 16px) max(16px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 16px) max(16px,env(safe-area-inset-left,0px))}
+.cm-card{position:relative;width:min(480px,100%);background:var(--surface);color:var(--text);border-radius:28px;padding:32px;box-shadow:0 30px 80px -20px rgba(0,0,0,.45);display:flex;flex-direction:column;gap:20px}
+.cm-head{display:flex;align-items:center;gap:14px}
+.cm-head img{width:56px;height:56px;border-radius:50%;object-fit:cover}
+.cm-head b{display:block;font-size:20px;letter-spacing:-.02em}
+.cm-head span{font-size:14px;color:var(--muted)}
+.cm-list{display:grid;gap:10px}
+.cm-row{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;background:var(--soft);text-decoration:none;color:inherit}
+.cm-row:hover{filter:brightness(.97)}
+.cm-row .ic{flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--surface);font-size:18px}
+.cm-row .tx{min-width:0;flex:1}
+.cm-row small{display:block;font-size:12px;color:var(--muted);letter-spacing:.02em}
+.cm-row strong{display:block;font-weight:600;font-size:15px;overflow-wrap:anywhere}
+.cm-copy{all:unset;cursor:pointer;font-size:13px;font-weight:500;color:var(--muted);padding:6px 10px;border-radius:999px;background:var(--surface)}
+.cm-copy:hover{color:var(--text)}
+.cm-copy:focus-visible{outline:2px solid var(--text)}
+.cm-x{position:absolute;top:16px;right:16px}
 </style>
 </head>
 <body>
@@ -682,8 +701,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
     <h2 style="margin-top:16px">Have a product or campaign to design?</h2>
     <p class="muted" style="margin-top:20px;font-size:19px;max-width:48ch">I take on app, web and iGaming design projects, from first concept to the code that ships.</p>
     <div class="ctas">
-      <a class="pill" href="https://www.linkedin.com/in/bojan-trajkovski-bab00b218/" target="_blank" rel="noopener">Message me on LinkedIn ↗</a>
-      <a class="pill ghost" href="https://servx.mt/" target="_blank" rel="noopener">See ServX live ↗</a>
+      <a class="pill" href="#contact" data-contact>Get in touch</a>
+      <a class="pill ghost" href="https://www.linkedin.com/in/bojan-trajkovski-bab00b218/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      
     </div>
   </div>
 </section>
@@ -845,6 +865,36 @@ var GALLERY={
     if(!view.hidden){if(e.key==='Escape')hideView();if(e.key==='ArrowLeft')show(idx-1);if(e.key==='ArrowRight')show(idx+1);}
     else if(e.key==='Escape')close();});
   addEventListener('hashchange',function(){if(!lb.hidden)close();});
+})();
+</script>
+
+<div class="cm" id="cm" hidden role="dialog" aria-modal="true" aria-labelledby="cm-title">
+  <div class="cm-card">
+    <button class="lb-btn cm-x" id="cm-close" type="button" aria-label="Close">✕</button>
+    <div class="cm-head"><img src="img-portrait.webp" alt=""><div><b id="cm-title">Bojan Trajkovski</b><span>Lead Graphic Designer / Frontend Developer</span></div></div>
+    <div class="cm-list">
+      <div class="cm-row"><span class="ic" aria-hidden="true">✉️</span><a class="tx" href="mailto:trajkovskibojan11@gmail.com" style="text-decoration:none;color:inherit"><small>Email</small><strong>trajkovskibojan11@gmail.com</strong></a><button class="cm-copy" type="button" data-copy="trajkovskibojan11@gmail.com">Copy</button></div>
+      <div class="cm-row"><span class="ic" aria-hidden="true">🇲🇹</span><a class="tx" href="tel:+35677530540" style="text-decoration:none;color:inherit"><small>Malta</small><strong>+356 7753 0540</strong></a><button class="cm-copy" type="button" data-copy="+356 7753 0540">Copy</button></div>
+      <div class="cm-row"><span class="ic" aria-hidden="true">🇲🇰</span><a class="tx" href="tel:+38976275375" style="text-decoration:none;color:inherit"><small>North Macedonia</small><strong>+389 76 275 375</strong></a><button class="cm-copy" type="button" data-copy="+389 76 275 375">Copy</button></div>
+      <a class="cm-row" href="https://www.linkedin.com/in/bojan-trajkovski-bab00b218/" target="_blank" rel="noopener"><span class="ic" aria-hidden="true">in</span><span class="tx"><small>LinkedIn</small><strong>bojan-trajkovski</strong></span><span class="cm-copy" aria-hidden="true">Open ↗</span></a>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var cm=document.getElementById('cm'),last=null;
+  function open(e){ if(e){e.preventDefault();} last=document.activeElement; cm.hidden=false; document.body.style.overflow='hidden'; document.getElementById('cm-close').focus(); }
+  function close(){ cm.hidden=true; document.body.style.overflow=''; if(last&&last.focus) last.focus(); }
+  document.querySelectorAll('a[href="#contact"], [data-contact]').forEach(function(a){a.addEventListener('click',open);});
+  document.getElementById('cm-close').onclick=close;
+  cm.addEventListener('click',function(e){if(e.target===cm)close();});
+  addEventListener('keydown',function(e){if(!cm.hidden&&e.key==='Escape')close();});
+  cm.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){
+    var t=b.dataset.copy;
+    function done(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500);}
+    try{navigator.clipboard.writeText(t).then(done,function(){sel(b)});}catch(x){sel(b)}
+  });});
+  function sel(b){var r=document.createRange();r.selectNodeContents(b.parentNode.querySelector('strong'));var s=getSelection();s.removeAllRanges();s.addRange(r);}
 })();
 </script>
 
